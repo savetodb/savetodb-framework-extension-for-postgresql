@@ -1,15 +1,15 @@
 -- =============================================
 -- SaveToDB Framework Extension for PostgreSQL
--- Version 10.6, December 13, 2022
+-- Version 10.8, January 9, 2023
 --
 -- This script updates SaveToDB Framework 9 to the latest version
 --
--- Copyright 2022 Gartle LLC
+-- Copyright 2022-2023 Gartle LLC
 --
 -- License: MIT
 -- =============================================
 
-SELECT CASE WHEN 1004 <= cast(substr(handler_code, 1, strpos(handler_code, '.') - 1) AS int) * 100 + cast(substr(handler_code, strpos(handler_code, '.') + 1) AS decimal) THEN 'SaveToDB Framework is up-to-date. Update skipped' ELSE handler_code END AS check_version FROM xls.handlers WHERE table_schema = 'xls' AND table_name = 'savetodb_framework_extension' AND column_name = 'version' AND event_name = 'Information' LIMIT 1;
+SELECT CASE WHEN 1008 <= cast(substr(handler_code, 1, strpos(handler_code, '.') - 1) AS int) * 100 + cast(substr(handler_code, strpos(handler_code, '.') + 1) AS decimal) THEN 'SaveToDB Framework is up-to-date. Update skipped' ELSE handler_code END AS check_version FROM xls.handlers WHERE table_schema = 'xls' AND table_name = 'savetodb_framework_extension' AND column_name = 'version' AND event_name = 'Information' LIMIT 1;
 
 DELETE FROM xls.handlers WHERE table_schema = 'xls' AND event_name = 'Actions' AND handler_name IN ('xl_actions_set_framework_10_mode', 'xl_actions_set_framework_9_mode');
 
@@ -34,7 +34,7 @@ FROM
         , CAST(NULL AS integer) AS menu_order
         , CAST(NULL AS boolean) AS edit_parameters
 
-    UNION ALL SELECT 'xls', 'savetodb_framework_extension', 'version', 'Information', NULL, NULL, 'ATTRIBUTE', '10.4', NULL, NULL, NULL
+    UNION ALL SELECT 'xls', 'savetodb_framework_extension', 'version', 'Information', NULL, NULL, 'ATTRIBUTE', '10.8', NULL, NULL, NULL
     UNION ALL SELECT 'xls', 'users', NULL, 'Actions', 'xls', 'xl_actions_set_extended_role_permissions', 'PROCEDURE', NULL, '_MsgBox', 22, true
     UNION ALL SELECT 'xls', 'users', NULL, 'Actions', 'xls', 'xl_actions_revoke_extended_role_permissions', 'PROCEDURE', NULL, '_MsgBox', 23, true
 
@@ -95,7 +95,7 @@ FROM
         , CAST(NULL AS integer) AS menu_order
         , CAST(NULL AS boolean) AS edit_parameters
 
-    UNION ALL SELECT 'xls', 'savetodb_framework_extension', 'version', 'Information', NULL, NULL, 'ATTRIBUTE', '10.4', NULL, NULL, NULL
+    UNION ALL SELECT 'xls', 'savetodb_framework_extension', 'version', 'Information', NULL, NULL, 'ATTRIBUTE', '10.8', NULL, NULL, NULL
     UNION ALL SELECT 'xls', 'users', NULL, 'Actions', 'xls', 'xl_actions_set_extended_role_permissions', 'PROCEDURE', NULL, '_MsgBox', 22, true
     UNION ALL SELECT 'xls', 'users', NULL, 'Actions', 'xls', 'xl_actions_revoke_extended_role_permissions', 'PROCEDURE', NULL, '_MsgBox', 23, true
 
